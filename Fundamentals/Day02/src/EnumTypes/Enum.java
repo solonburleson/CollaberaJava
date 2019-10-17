@@ -4,10 +4,11 @@ public class Enum {
 	public enum Fruit{APPLE,ORANGE,BANANA};
 	
 	public void enumTest() {
-		Enum.Fruit f1,f2,f3;
+		Enum.Fruit f1;
+//		Enum.Fruit f2,f3;
 		f1 = Enum.Fruit.APPLE;
-		f2 = Enum.Fruit.ORANGE;
-		f3 = Enum.Fruit.BANANA;
+//		f2 = Enum.Fruit.ORANGE;
+//		f3 = Enum.Fruit.BANANA;
 		System.out.println("Favorite Fruit is " + f1);
 		
 		Enum.Fruit favoriteFruit = f1;
