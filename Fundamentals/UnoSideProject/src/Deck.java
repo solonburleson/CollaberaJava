@@ -6,22 +6,23 @@ public class Deck {
 	private String[] colors = {"red","green","blue","yellow"};
 	
 	public Deck() {
+		newDeck();
+	}
+	
+	private void newDeck() {
 		for(int i = 0; i < values.length; i++) {
 			switch(values[i]) {
 			case "0":
 				for(int j = 0; j < colors.length; j++) {
 					Card card = new Card(values[i],colors[j]);
-					card.showCard();
 					deckOfCards.add(card);
 				}
 				break;
 			case "Wild":
 			case "Wild Draw Four":
-				for(int j = 0; j < colors.length; j++) {
-					for(int k = 0; k < 1; k++) {
-						Card card = new Card(values[i], "Wild");
-						deckOfCards.add(card);
-					}
+				for(int k = 0; k < 4; k++) {
+					Card card = new Card(values[i], "Wild");
+					deckOfCards.add(card);
 				}
 				break;
 			default:
