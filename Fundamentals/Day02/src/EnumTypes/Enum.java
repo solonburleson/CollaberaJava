@@ -1,7 +1,7 @@
 package EnumTypes;
 
 public class Enum {
-	public enum Fruit{APPLE,ORANGE,BANANA};
+	public static enum Fruit{APPLE,ORANGE,BANANA};
 	
 	public void enumTest() {
 		Enum.Fruit f1;
