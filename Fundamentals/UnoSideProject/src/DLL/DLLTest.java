@@ -1,3 +1,6 @@
+package DLL;
+
+import Game.Player;
 
 public class DLLTest {
 
