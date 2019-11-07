@@ -364,38 +364,38 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 09:25:57.190
 !MESSAGE executing callback sts4.classpath.jxRyoRyx SUCCESS [done]
 
-!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:17:10.750
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:40:51.389
 !MESSAGE Preparing classpath changed notification Day19
 
-!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:17:10.774
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:40:51.391
 !MESSAGE exists = true open = true => deleted = false
 
-!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:17:10.781
-!MESSAGE classpath=11 entries
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:40:51.393
+!MESSAGE classpath=10 entries
 
-!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:17:10.804
-!MESSAGE buffering callback sts4.classpath.jxRyoRyx Day19 false 11
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:40:51.395
+!MESSAGE buffering callback sts4.classpath.jxRyoRyx Day19 false 10
 
-!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:17:10.809
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:40:51.396
 !MESSAGE executing callback sts4.classpath.jxRyoRyx 1 batched events
 
-!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:17:10.899
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:40:51.401
 !MESSAGE executing callback sts4.classpath.jxRyoRyx SUCCESS [done]
 
-!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:17:12.503
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:43:27.710
 !MESSAGE Preparing classpath changed notification Day19
 
-!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:17:12.505
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:43:27.711
 !MESSAGE exists = true open = true => deleted = false
 
-!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:17:12.509
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:43:27.713
 !MESSAGE classpath=11 entries
 
-!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:17:12.512
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:43:27.714
 !MESSAGE buffering callback sts4.classpath.jxRyoRyx Day19 false 11
 
-!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:17:12.514
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:43:27.715
 !MESSAGE executing callback sts4.classpath.jxRyoRyx 1 batched events
 
-!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:17:12.575
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:43:27.719
 !MESSAGE executing callback sts4.classpath.jxRyoRyx SUCCESS [done]
