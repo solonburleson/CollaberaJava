@@ -9,7 +9,15 @@ public class City {
 	
 	public City() {
 		super();
-		
+	}
+	
+	public City(int id, String name, String district, int population, String countryCode) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.district = district;
+		this.population = population;
+		this.countryCode = countryCode;
 	}
 
 	public int getId() {
@@ -50,5 +58,10 @@ public class City {
 
 	public void setCountryCode(String countryCode) {
 		this.countryCode = countryCode;
+	}
+	
+	@Override
+	public String toString() {
+		return "City [id=" + id + ", name=" + name + ", district=" + district + ", population=" + population + ", countrycode=" + countryCode + "]";
 	}
 }
