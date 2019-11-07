@@ -1,16 +1,29 @@
 package jdbc;
 
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Properties;
 
 public class JdbcTestApp {
 
 	public static void main(String[] args) {
 		Connection conn = null;
+		Properties props = new Properties();
 		try {
-			conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/world", "root", "root");
+			props.load(new FileInputStream("jdbc.properties"));
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		String dburl = props.getProperty("dburl");
+		String username = props.getProperty("username");
+		String password = props.getProperty("password");
+		
+		try {
+			conn = (Connection) DriverManager.getConnection(dburl, username, password);
 			if(conn != null) {
 				System.out.println("mysql connection successfully acquired");
 			}
