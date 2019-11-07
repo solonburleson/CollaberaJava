@@ -112,6 +112,7 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.ui 2 2 2019-11-04 11:17:52.157
 !MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
+<<<<<<< HEAD
 !SESSION 2019-11-07 08:57:10.304 -----------------------------------------------
 eclipse.buildId=4.4.1.201910232221-RELEASE
 java.version=12.0.2
@@ -399,3 +400,5 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-11-07 10:43:27.719
 !MESSAGE executing callback sts4.classpath.jxRyoRyx SUCCESS [done]
+=======
+>>>>>>> parent of 944f1d4... day16-18

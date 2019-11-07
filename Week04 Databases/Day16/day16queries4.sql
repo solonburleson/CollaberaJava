@@ -7,19 +7,16 @@ CREATE TABLE IF NOT EXISTS job_history (
     JOB_ID varchar(10) NOT NULL,
     DEPARTMENT_ID decimal(4,0) NOT NULL
 );
-
 desc job_history;
 */
 /*
 drop table countries;
-
 CREATE TABLE IF NOT EXISTS countries ( 
 	COUNTRY_ID varchar(2) NOT NULL,
     COUNTRY_NAME varchar(40) NOT NULL,
     REGION_ID decimal(10,0) NOT NULL,
     UNIQUE(COUNTRY_ID)
 );
-
 desc countries;
 */
 CREATE TABLE IF NOT EXISTS jobs (
@@ -35,7 +32,6 @@ INSERT into jobs(job_id) values('QQ');
 select * from jobs;
 /*
 drop table countries;
-
 CREATE TABLE IF NOT EXISTS countries ( 
 	COUNTRY_ID int NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
     COUNTRY_NAME varchar(40) NOT NULL,
