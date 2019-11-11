@@ -1,17 +1,15 @@
 package com.collabera.day19.dao;
 
-import java.io.FileInputStream;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Properties;
 
 import org.apache.log4j.Logger;
 
+import com.collabera.day19.connection.ConnectionManager;
 import com.collabera.day19.models.City;
 
 public class CityDao {
@@ -39,23 +37,15 @@ public class CityDao {
 	public List<City> find( String query ) {
 		List<City> list = new ArrayList<City>();
 		
-		Properties props = new Properties();
-		try {
-			props.load(new FileInputStream("jdbc.properties"));
-		} catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
-		
-		String dburl = props.getProperty("dburl");
-		String username = props.getProperty("username");
-		String password = props.getProperty("password");
+		ConnectionManager conn = new ConnectionManager();
 		Statement stmt = null;
 		
 		try {
-			stmt = DriverManager.getConnection(dburl, username, password).createStatement();
+			stmt = conn.getConnection().createStatement();
 		} catch(SQLException e) {
 			
 		}
+		
 		String sqlquery = "SELECT * FROM cities c " + query;
 	
 		try {

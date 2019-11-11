@@ -1,17 +1,15 @@
 package com.collabera.day19.dao;
 
-import java.io.FileInputStream;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Properties;
 
 import org.apache.log4j.Logger;
 
+import com.collabera.day19.connection.ConnectionManager;
 import com.collabera.day19.models.Country;
 
 public class CountryDao {
@@ -23,26 +21,87 @@ public class CountryDao {
 		return list;
 	}
 	
+	public boolean delete(String code) {
+		if(code == null) {
+			return false;
+		}
+		
+		ConnectionManager conn = new ConnectionManager();
+		
+		PreparedStatement stmt = null;
+		
+		try {
+			stmt = conn.getConnection().prepareStatement("DELETE FROM countries WHERE code = ?");
+			stmt.setString(1, code);
+		} catch(SQLException sqle) {
+			logger.error(sqle.getMessage());
+		}
+		
+		int count = 0;
+		try {
+			count = stmt.executeUpdate();
+		} catch(SQLException sqle) {
+			logger.error(sqle.getMessage());
+		} finally {
+			try {
+				stmt.close();
+			} catch(SQLException sqle) {
+				logger.error(sqle.getMessage());
+			}
+		}
+		
+		return count > 0;
+	}
+	
+	public boolean insert(Country country) {
+		String code = country.getCode();
+		
+		if(code == null) {
+			return false;
+		}
+		
+		ConnectionManager conn = new ConnectionManager();
+		
+		PreparedStatement stmt = null;
+		
+		try {
+			stmt = conn.getConnection().prepareStatement("INSERT INTO countries(code, name, continent, region) VALUES(?, ?, ?, ?)");
+			stmt.setString(1, country.getCode());
+			stmt.setString(2, country.getName());
+			stmt.setString(3, country.getContinent());
+			stmt.setString(4, country.getRegion());
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+		int count = 0;
+		try {
+			count = stmt.executeUpdate();
+		} catch(SQLException sqle) {
+			logger.error(sqle.getMessage());
+		} finally {
+			try {
+				stmt.close();
+			} catch(SQLException sqle) {
+				logger.error(sqle.getMessage());
+			}
+		}
+		
+		return count > 0;
+	}
+	
 	//public List<Country> find(String query) {
 	public List<Country> find(String parameter) {
 		List<Country> countries = new ArrayList<Country>();
 		
-		Properties prop = new Properties();
-		try {
-			prop.load(new FileInputStream("jdbc.properties"));
-		} catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
+		ConnectionManager conn = new ConnectionManager();
 		
-		String dburl = prop.getProperty("dburl");
-		String username = prop.getProperty("username");
-		String password = prop.getProperty("password");
 //		Statement stmt = null;
 		PreparedStatement pstmt = null;
 		
 		try {
 //			stmt = DriverManager.getConnection(dburl, username, password).createStatement();
-			pstmt = DriverManager.getConnection(dburl, username, password).prepareStatement("SELECT * FROM countries WHERE name = ?");
+			pstmt = conn.getConnection().prepareStatement("SELECT * FROM countries WHERE name = ?");
 			pstmt.setString(1, parameter);
 		} catch(SQLException e) {
 			System.out.println(e.getMessage());

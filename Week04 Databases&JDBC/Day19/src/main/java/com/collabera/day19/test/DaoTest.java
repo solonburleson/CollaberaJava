@@ -1,5 +1,6 @@
 package com.collabera.day19.test;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -35,5 +36,27 @@ public class DaoTest {
 		} catch(Exception e) {
 			log.error(e.getMessage());
 		}
+		
+		try {
+			Country country = new Country();
+			country.setCode("ABC");
+			country.setContinent("Asia");
+			country.setName("ABC");
+			country.setRegion("WWW");
+			boolean success = countryDao.insert(country);
+			if(success) {
+				log.info("SUCCESS: INSERT country: " + country);
+			}
+		} catch(Exception e) {
+			log.error(e.getMessage());
+		}
+		
+//		try {
+//			String code = "ABC";
+//			boolean count = countryDao.delete(code);
+//			log.info("SUCCESS: Delete country: " + code);
+//		} catch(Exception e) {
+//			log.error(e.getMessage());
+//		}
 	}
 }
