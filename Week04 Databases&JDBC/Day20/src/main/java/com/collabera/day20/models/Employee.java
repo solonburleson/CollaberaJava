@@ -12,12 +12,12 @@ public class Employee {
 		super();
 	}
 	
-	public Employee(int id, String fname, String lname, Department department) {
+	public Employee(int id, String fname, String lname, int depart_id) {
 		super();
 		this.id = id;
 		this.firstName = fname;
 		this.lastName = lname;
-		this.department = department;
+		setDepartment(depart_id);
 	}
 
 	public int getId() {
