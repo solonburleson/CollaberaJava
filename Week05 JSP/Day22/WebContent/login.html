@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Day22 - Login</title>
+<style>
+	form label{
+		display: inline-block;
+		width: 100px;
+	}
+</style>
+</head>
+<body>
+	<h1>Please log in:</h1>
+	<form action="LoginServlet" method="POST">
+		<div>
+			<label for="name">Name:</label>
+			<input type="text" name="name" />
+		</div>
+		<div>
+			<label for="password">Password:</label>
+			<input type="password" name="password" />
+		</div>
+		<input type="submit" />
+	</form>
+</body>
+</html>
