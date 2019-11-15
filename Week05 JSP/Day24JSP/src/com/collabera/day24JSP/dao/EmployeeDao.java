@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 import com.collabera.day24JSP.models.Employee;
 
@@ -16,42 +17,56 @@ public class EmployeeDao {
 		}
 	}
 	
-	public static List<Employee> getList() {
+	public List<Employee> getList() {
 		return new ArrayList<Employee>(employeeMap.values());
 	}
 	
 	public List<Employee> getList(int pageNum, int pageSize) {
-		ArrayList<Employee> shortList = new ArrayList<Employee>();
-		int count = 0;
+		return employeeMap.entrySet().stream().skip((pageNum - 1) * pageSize).limit(pageSize).map(Map.Entry::getValue).collect(Collectors.toList());
 		
-		for(Employee e : getList()) {
-			if(count >= (pageNum - 1) * pageSize && count < ((pageNum - 1) * pageSize) + pageSize)  {
-				shortList.add(e);
-			}
-			count++;
-		}
-		
-		return shortList;
+//		ArrayList<Employee> shortList = new ArrayList<Employee>();
+//		int count = 0;
+//		
+//		for(Employee e : getList()) {
+//			if(count >= (pageNum - 1) * pageSize && count < ((pageNum - 1) * pageSize) + pageSize)  {
+//				shortList.add(e);
+//			}
+//			count++;
+//		}
+//		
+//		return shortList;
 	}
 	
-	public static boolean insert(Employee emp) {
-		boolean ret = false;
-		
-		if(!employeeMap.containsKey(emp.getId())) {
-			employeeMap.put(emp.getId(), emp);
-			ret = true;
-		}
-		return ret;
+	public Employee insert(Employee emp) {
+		employeeMap.put(emp.getId(), emp);
+		return employeeMap.get(emp.getId());
+//		boolean ret = false;
+//		
+//		if(!employeeMap.containsKey(emp.getId())) {
+//			employeeMap.put(emp.getId(), emp);
+//			ret = true;
+//		}
+//		return ret;
 	}
 	
-	public static boolean delete(Employee emp) {
-		boolean ret = false;
+	public Employee delete(int id) {
+		return employeeMap.remove(id);
 		
-		if(employeeMap.containsKey(emp.getId())) {
-			employeeMap.remove(emp.getId());
-			ret = true;
-		}
-		
-		return ret;
+//		boolean ret = false;
+//		
+//		if(employeeMap.containsKey(emp.getId())) {
+//			employeeMap.remove(emp.getId());
+//			ret = true;
+//		}
+//		
+//		return ret;
+	}
+	
+	public int getTotalRecords() {
+		return employeeMap.size();
+	}
+	
+	public Employee getById(int id) {
+		return employeeMap.get(id);
 	}
 }

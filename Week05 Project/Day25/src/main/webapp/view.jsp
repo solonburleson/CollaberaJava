@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="com.collabera.day24JSP.dao.*" %>
-<%@ page import="com.collabera.day24JSP.models.*" %>
+<%@ page import="com.collabera.day25.dao.*" %>
+<%@ page import="com.collabera.day25.models.*" %>
 <%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html>
@@ -54,25 +54,24 @@
 		</thead>
 		<tbody>
 			<%
-			int pageSize = 5;
+			int pageSize = 1;
 			int pageNum = Integer.parseInt(request.getParameter("page"));
 			EmployeeDao empDao = new EmployeeDao();
 			
-			List<Employee> empList = empDao.getList(pageNum,pageSize);
-			for(Employee e : empList) {
+			List<Employee> list = empDao.getList(pageNum, pageSize);
+			
+			for(Employee e : list) {
 			%>
-				<tr>
-					<td><%= e.getId() %></td>
-					<td><%= e.getFirstName() %></td>
-					<td><%= e.getLastName() %></td>
-					<td>
-						<a href="delete.jsp?id=<%= e.getId() %>">Delete</a>
-						<a href="update.jsp?id=<%= e.getId() %>">Update</a>
-					</td>
-				</tr>
-			<%
-			}
-			%>
+			<tr>
+				<td><%= e.getId() %></td>
+				<td><%= e.getFirstName() %></td>
+				<td><%= e.getLastName() %></td>
+				<td>
+					<a href="delete.jsp?id=<%= e.getId() %>">Delete</a>
+					<a href="update.jsp?id=<%= e.getId() %>">Update</a>
+				</td>
+			</tr>
+			<% } %>
 		</tbody>
 	</table>
 	<div id="pagination">
