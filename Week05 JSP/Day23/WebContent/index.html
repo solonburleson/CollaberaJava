@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>JSP Demo</title>
+<style>
+	a {
+		padding: 10px;
+		margin: 0 20px;
+	}
+	a:hover{
+		background-color: lightgrey;
+	}
+</style>
+</head>
+<body>
+	<h1>JSP Index Page</h1>
+	<a href="hello.jsp">Hello</a> |
+	<a href="test/testfolder.jsp">Test Folder</a> |
+	<a href="welcome.jsp">Welcome</a> |
+	<a href="currentTime.jsp">Current Time</a> |
+	<a href="declaration.jsp">Declaration</a> |
+	<a href="redirect.jsp">Redirect</a> |
+	<a href="testBootstrap.jsp">Bootstrap 4</a> |
+	<a href="visitCounter.jsp">Visit Counter</a> |
+	<a href="login.jsp">Login</a> |
+	<a href="includeDemo.jsp">Include Demo</a> |
+	<hr>
+	<form action="welcome.jsp" method="POST">
+		<label for="uname">User Name:</label>
+		<input type="text" name="uname" />
+		<input type="submit" value="Submit" />
+	</form>
+</body>
+</html>
