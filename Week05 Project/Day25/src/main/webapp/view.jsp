@@ -14,7 +14,7 @@
 		color: blue;
 	}
 	table{
-		border: 1px solid black;
+		border: 2px solid black;
 	}
 	td{
 		border: 1px solid black;
@@ -32,17 +32,46 @@
 		text-decoration: none;
 		padding: 5px;
 	}
+	#pagination>h3 {
+		display: inline-block;
+	}
 	#pagination>a:hover {
 		border: 2px solid lightgreen;
 	}
 	#pagination {
 		margin: 10px 0;
 	}
+	tr:nth-child(even) {
+		background-color: lightblue;
+	}
+	th {
+		background-color: tan;
+		color: red;
+	}
 </style>
 </head>
 <body>
 	<h1>Page #<%= request.getParameter("page") %></h1>
 	<a href="update.jsp?id=-1">Add Employee</a>
+	<%
+	String size = request.getParameter("pageSize");
+	int pageSize;
+	if(size == null){
+		pageSize = 1;
+	} else {
+		pageSize = Integer.parseInt(size);
+	}
+	int pageNum = Integer.parseInt(request.getParameter("page"));
+	%>
+	<form>
+		<select name="pageSize" onchange="this.form.submit()">
+			<option value="1" <% if(pageSize == 1) out.print("selected"); %>>1</option>
+			<option value="3" <% if(pageSize == 3) out.print("selected"); %>>3</option>
+			<option value="5" <% if(pageSize == 5) out.print("selected"); %>>5</option>
+			<option value="7" <% if(pageSize == 7) out.print("selected"); %>>7</option>
+		</select>
+		<input type="hidden" name="page" value="<%= pageNum %>" />
+	</form>
 	<table>
 		<thead>
 			<tr>
@@ -54,8 +83,6 @@
 		</thead>
 		<tbody>
 			<%
-			int pageSize = 1;
-			int pageNum = Integer.parseInt(request.getParameter("page"));
 			EmployeeDao empDao = new EmployeeDao();
 			
 			List<Employee> list = empDao.getList(pageNum, pageSize);
@@ -75,6 +102,7 @@
 		</tbody>
 	</table>
 	<div id="pagination">
+	<h3>Pages :</h3>
 		<%
 		int pages = empDao.getTotalRecords() / pageSize;
 		int rem = empDao.getTotalRecords() % pageSize;
@@ -84,13 +112,17 @@
 		}
 		
 		for(int i = 1; i <= pages; i++){
-			if(i == pageNum){
+			if(i == pageNum && pageSize == 1){
 		%>
-			<a class="active" href="view.jsp?page=<%= i  %>"><%= i %></a>
-		<%
-		} else {
-		%>
-			<a href="view.jsp?page=<%= i  %>"><%= i %></a>
+				<a class="active" href="view.jsp?page=<%= i  %>"><%= i %></a>
+			<%
+			} else if(i == pageNum) {
+			%>
+				<a class="active" href="view.jsp?page=<%= i  %>&pageSize=<%= pageSize %>"><%= i %></a>
+			<% } else if(pageSize != 1 && i != pageNum) { %>	
+				<a href="view.jsp?page=<%= i  %>&pageSize=<%= pageSize %>"><%= i %></a>
+			<% } else { %>
+				<a href="view.jsp?page=<%= i  %>"><%= i %></a>
 		<%
 			}
 		}

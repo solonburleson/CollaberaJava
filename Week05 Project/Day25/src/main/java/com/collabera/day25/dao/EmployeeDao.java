@@ -6,8 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 import com.collabera.day25.connections.ConnectionManager;
 import com.collabera.day25.models.Employee;
@@ -42,7 +40,7 @@ public class EmployeeDao {
 	}
 	
 	public List<Employee> getList(int pageNum, int pageSize){
-List<Employee> empList = new ArrayList<Employee>();
+		List<Employee> empList = new ArrayList<Employee>();
 		
 		PreparedStatement stmt = null;
 		
