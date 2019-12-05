@@ -1,11 +1,13 @@
 #1
 CREATE SCHEMA IF NOT EXISTS employeesdb;
 
+
 #2
 CREATE TABLE IF NOT EXISTS employeesdb.departments(
 	department_id int PRIMARY KEY,
     department_name VARCHAR(50)
 );
+
 
 #3
 INSERT INTO departments VALUES(1,'ACCOUNTING'), (2, 'HR'), (3, 'DEVELOPMENT'), (4, 'SALES');
