@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "persons")
 public class Person implements Serializable {
@@ -35,6 +37,7 @@ public class Person implements Serializable {
 	
 	@NotNull
 	@Column(name = "date_of_birth")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone="CST")
 	private Date dob;
 	
 	@OneToOne(cascade = CascadeType.ALL)
@@ -84,6 +87,14 @@ public class Person implements Serializable {
 
 	public void setDob(Date dob) {
 		this.dob = dob;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	@Override
