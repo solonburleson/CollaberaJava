@@ -2,13 +2,23 @@ package com.collabera.todo.models;
 
 import java.util.Date;
 
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Size;
+
 public class Todo {
 	
 	private int id;
+	
+	@Size(min = 3, message ="Description should contain 3 or more characters")
 	private String desc;
 	private String user;
+	@Future
 	private Date targetDate;
 	private boolean status;
+	
+	public Todo() {
+		super();
+	}
 	
 	public Todo(int id, String desc, String user, Date targetDate, boolean status) {
 		super();

@@ -1,5 +1,8 @@
 package com.collabera.review;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainTest {
 
 	public static void main(String[] args) {
@@ -20,10 +23,74 @@ public class MainTest {
 //		
 //		System.out.println(wordRevStringPres("Given a sentence, reverse the letter order of each word in the sentence, while preserving the original order of the words themselves in the sentence.  Print the output to screen."));
 	
-		System.out.println(fun(new int[] {1, 3, 5}));
-		System.out.println(fun(new int[] {4, 5, 6, 7, 8, 9}));
-		System.out.println(fun(new int[] {2, 1, 6, 9, 11}));
-		System.out.println(fun(new int[] {3, 1, 6, 7, 11}));
+//		System.out.println(fun(new int[] {1, 3, 5}));
+//		System.out.println(fun(new int[] {4, 5, 6, 7, 8, 9}));
+//		System.out.println(fun(new int[] {2, 1, 6, 9, 11}));
+//		System.out.println(fun(new int[] {3, 1, 6, 7, 11}));
+		
+//		System.out.println(sum1000Mults());
+//		
+//		Scanner scanner = new Scanner(System.in);
+//		String input = scanner.nextLine();
+//		boolean check = palindromeCheck(input);
+//		if(check == true) {
+//			System.out.println("Palindrome entered");
+//		} else {
+//			System.out.println("Not a palindrome");
+//		}
+//		scanner.close();
+		
+		System.out.println(fibonacciSumEvens());
+	}
+	
+	public static int fibonacciSumEvens() {
+		List<Integer> fibonacci = new ArrayList<Integer>();
+		int sum = 0;
+		
+		fibonacci.add(0);
+		fibonacci.add(1);
+		
+		while(fibonacci.get(fibonacci.size() - 1) <= 4000000) {
+			int next = fibonacci.get(fibonacci.size() - 1) + fibonacci.get(fibonacci.size() - 2);
+			fibonacci.add(next);
+			if(next % 2 == 0) {
+				sum += next; 
+			}
+		}
+		
+		return sum;
+	}
+	
+	public static boolean palindromeCheck(String str) {
+		StringBuilder sb = new StringBuilder(str);
+		
+		for(int i = 0; i < sb.length(); i++) {
+			if(sb.charAt(i) == ' ') {
+				sb.replace(i, i+1, "");
+			}
+		}
+		
+		System.out.println(sb);
+		
+		for(int i = 0; i < sb.length() / 2; i++) {
+			if(sb.charAt(i) != sb.charAt(sb.length()-1-i)) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
+	public static int sum1000Mults() {
+		int sum = 0;
+		
+		for(int i = 0; i < 1000; i++) {
+			if(i % 3 == 0 || i % 5 == 0) {
+				sum += i;
+			}
+		}
+		
+		return sum;
 	}
 	
 	public static int fun(int[] arr) {

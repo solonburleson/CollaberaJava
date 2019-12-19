@@ -49,7 +49,9 @@ public class TodoService {
 	}
 	
 	public Todo editTodo(Todo todo) {
-		todos.stream().filter(t -> t.getId() == todo.getId()).forEach(t -> t = todo);
+//		todos.stream().filter(t -> t.getId() == todo.getId()).forEach(t -> t = todo);
+		deleteTodo(todo.getId());
+		todos.add(todo);
 		return todo;
 	}
 	
