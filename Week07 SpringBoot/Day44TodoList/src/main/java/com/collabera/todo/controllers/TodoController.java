@@ -23,13 +23,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.collabera.todo.models.Todo;
-import com.collabera.todo.services.TodoService;
+import com.collabera.todo.services.TodoServiceI;
 
 @Controller
 public class TodoController {
 	
 	@Autowired
-	TodoService service;
+	TodoServiceI service;
 	
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
@@ -63,6 +63,7 @@ public class TodoController {
 		}
 		
 		String name = getLoggedinUserName();
+		
 		service.addTodo(todo.getDesc(), name, todo.getTargetDate(), false);
 		
 		return "redirect:/listtodos";
@@ -91,6 +92,10 @@ public class TodoController {
 	
 	@RequestMapping(value = "/deletetodo", method = RequestMethod.GET)
 	public String deleteTodo(@RequestParam int id) {
+		
+		if(id == 1) {
+			throw new RuntimeException("Something went wrong");
+		}
 		
 		service.deleteTodo(id);
 		

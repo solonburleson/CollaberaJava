@@ -20,7 +20,7 @@
 			<tr>
 				<td>${user.id}</td>
 				<td>${user.userName}</td>
-				<td>${user.password}</td>
+				<td class="hidetext">${user.password}</td>
 				<td>${user.fullName}</td>
 				<td>${user.roles}</td>
 				<td>

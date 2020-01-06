@@ -8,5 +8,10 @@
 <head>
 <title>Todo App</title>
 <link href="webjars/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+<style>
+	.hidetext { 
+		-webkit-text-security: disc;
+	} 
+</style>
 </head>
 <body>

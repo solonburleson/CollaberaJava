@@ -1,54 +1,58 @@
 package com.collabera.todo.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.collabera.todo.dao.UserDao;
 import com.collabera.todo.models.User;
 
+@Primary
 @Service
-public class UserService implements UserDetailsService {
-	private static List<User> users = new ArrayList<User>();
-	private static int IDCounter = 1;
+public class UserServiceRDBMS implements UserServiceI {
 	
-	static {
-		users.add(new User(IDCounter++, "Solon", "admin", "Solon Burleson", "ADMIN"));
-	}
+	@Autowired
+	UserDao dao;
 	
 	public List<User> findAllUsers() {
-		return users;
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	public User findById(int id) {
-		return users.stream().filter(u -> u.getId() == id).findFirst().orElse(null);
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
+
 	public User findByUserName(String userName) {
-		return users.stream().filter(u -> u.getUserName().equals(userName)).findFirst().orElse(null);
+		// TODO Auto-generated method stub
+		return dao.getUserByUserName(userName);
 	}
 	
 	public void addUser(User user) {
-		users.add(user);
+		// TODO Auto-generated method stub
+		
 	}
 	
 	public void addUser(String userName, String password, String fullName, String roles) {
-		addUser(new User(IDCounter++, userName, password, fullName, roles));
+		// TODO Auto-generated method stub
+		
 	}
 	
 	public void editUser(User user) {
-		deleteUser(user.getId());
-		users.add(user);
+		// TODO Auto-generated method stub
+		
 	}
-	
+
 	public void deleteUser(int id) {
-		User user = users.stream().filter(u -> u.getId() == id).findFirst().orElse(null);
-		users.remove(user);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override

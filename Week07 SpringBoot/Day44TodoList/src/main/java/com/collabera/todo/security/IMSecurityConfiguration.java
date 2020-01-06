@@ -9,18 +9,20 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.collabera.todo.services.UserService;
+
 @Configuration
 public class IMSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("Solon").password(passwordEncoder().encode("admin")).roles("USER","ADMIN");
+//		auth.inMemoryAuthentication().withUser("Solon").password(passwordEncoder().encode("admin")).roles("USER","ADMIN");
+//		
+//		auth.inMemoryAuthentication().withUser("Ann").password(passwordEncoder().encode("admin")).roles("USER");
+//		
+//		auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN");
 		
-		auth.inMemoryAuthentication().withUser("Ann").password(passwordEncoder().encode("admin")).roles("TEST");
-		
-		auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN");
-		
-		
+		auth.userDetailsService(new UserService()).passwordEncoder(passwordEncoder());
 	}
 	
 	@Bean

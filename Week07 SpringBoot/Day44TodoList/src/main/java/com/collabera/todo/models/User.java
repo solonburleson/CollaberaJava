@@ -1,5 +1,6 @@
 package com.collabera.todo.models;
 
+
 public class User {
 	private int id;
 	private String userName;

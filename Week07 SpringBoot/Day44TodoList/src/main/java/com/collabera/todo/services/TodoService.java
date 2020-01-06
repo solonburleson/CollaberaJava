@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.collabera.todo.models.Todo;
 
 @Service
-public class TodoService {
+public class TodoService implements TodoServiceI {
 	
 	private static List<Todo> todos = new ArrayList<Todo>();
 	private static int IDCounter = 1;

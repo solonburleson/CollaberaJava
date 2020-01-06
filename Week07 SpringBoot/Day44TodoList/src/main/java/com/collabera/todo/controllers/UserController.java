@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.collabera.todo.models.User;
-import com.collabera.todo.services.UserService;
+import com.collabera.todo.services.UserServiceI;
 
 @Controller
 public class UserController {
+	
 	@Autowired
-	UserService service;
+	UserServiceI service;
 	
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public String allUsers(ModelMap model) {
